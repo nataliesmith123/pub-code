@@ -423,9 +423,8 @@ UNK_SUS_revenueAllocation <- as.double(NA)
                          showSortable = TRUE)
   
   
-library(officer)
-library(flextable)
-  
+librarian::shelf(officer, flextable)
+
 createTable <- nicer %>%
   group_by(Stakeholder, phase) %>%
   mutate(extraID = row_number()) %>%
@@ -451,62 +450,10 @@ createTable <- nicer %>%
 
 read_docx() %>% 
   body_add_flextable(createTable, align="left") %>%
-  print(target=here("output", "pcd_table1.docx"))
+  print(target=here("policy-costing", "pcd_table1.docx"))
 
   
 
-rm(specialProjectsCSPI_2019, publicEducationCSPI_2019)
-rm(acts, actsPerYear, legislativeDays, workingDays, workingWeeks, dcDays, dcWeeks, dcHoursPerWeek, dcAnnualTotalHours, dcLegislativeTime, 
-   dcAnnualLegislativeHours, districtWeeks, districtHoursPerWeek, districtAnnualTotalHours, districtLegislativeTime, 
-   districtAnnualLegislativeHours, totalAnnualTime, totalAnnualLegislativeHours, proportionLegislativeTime, 
-   legislativeOutlays_2019, legislativeOutlays_2021, actsPerLegislativeSession, proportionOfOutlaysOnLegislativeActivities)
-rm(collectTheRevenueTTB_2019, ssbTaxCollection)
-rm(lobbying2009)
 
 
 
-
-
-## @knitr blah
-# BLAH --------------------------------------------------------------------
-
-
-           # , 
-           # 
-           # label = paste0(dollars, " (", action, ")")) 
-           # 
-           # 
-           # 
-  # %>%
-  #   
-  #   group_by(stakeholder, phasef) %>%
-  #   
-  #   summarise(labels = paste(label, collapse="\n"), 
-  #             .groups="drop")
-  # 
-  # 
-  # 
-  # 
-  # ggplot(data=nicer, aes(x=phasef, y=fct_rev(stakeholder))) + 
-  #   geom_label(aes(label=labels, hjust=0), 
-  #              show.legend = FALSE, 
-  #              nudge_x=-0.25, size=3) + 
-  #   scale_x_discrete(position="top") +
-  #   theme_bw() + 
-  #   xlab("") + ylab("") + 
-  #   theme(axis.text = element_text(size=10, colour="black"), 
-  #         axis.ticks = element_blank(), 
-  #         panel.grid = element_blank()) 
-  # # caption: All costs displayed are in 2021 dollars. With the exception of the tax revenue gained by the Internal Revenue Service, all costs are expenditures.
-  # 
-  # ggsave(here("output", "figure_xyz.png"), plot=last_plot(), device="png", width = 10, height=5, units="in")
-  # 
-  # 
-  # nicer %>%
-  #   pivot_wider(id_cols = "stakeholder", 
-  #               names_from = "phasef", 
-  #               values_from = "label", 
-  #               values_fn = paste) %>%
-  #   gt(rowname_col = "stakeholder")
-  # 
-    
