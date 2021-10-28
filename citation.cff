@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "If you use code from this repository, please cite it as below."
+authors:
+  - family-names: Smith
+    given-names: Natalie
+    orcid: https://orcid.org/0000-0002-2052-943
+title: "Publication Code"
